@@ -10,9 +10,6 @@ plugins:
   - serverless-reqvalidator-plugin
   - serverless-aws-documentation
 
-# package:
-#     individually: true
-
 custom:
  documentation:
     api:
@@ -136,17 +133,6 @@ functions:
   UpdateTodo:
     handler: src/lambda/http/updateTodo.handler
     events:
-      - http:
-          method: PATCH
-          path: todos/{todoId}
-          cors: true
-          authorizer: Auth
-          reqValidatorName: RequestBodyValidator
-          documentation:
-            summary: Update existing TODO item
-            description: Update existing TODO item
-            requestModels:
-              'application/json': UpdateRequest
       - http:
           method: PUT
           path: todos/{todoId}
